@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./MyWidget.css";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const API_KEY = "AIzaSyDMiaCwB6nOMoJmIK3nDVuyMMjHixK1dv8"
+const API_KEY = "AIzaSyBjnsyhrmPv8UsoVi1QcEDckk5Us3T-qww"
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const Chatbox = () => {
@@ -26,7 +26,7 @@ const Chatbox = () => {
         setInput("");
 
         try {
-            const model = genAI.getGenerativeModel({ model: "tunedModels/kittenchanaivaried-ixs6om8ymgd6" });
+            const model = genAI.getGenerativeModel({ model: "tunedModels/kittenchannormal-5mks2bnict6e" });
             const result = await model.generateContent(input);
             const aiResponse = result.response.text();
 
