@@ -6,6 +6,13 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+.chat-container.dark-mode {
+    background-color: #1a1a1a;
+    color: white;
 }
 
 /* Sidebar */
@@ -38,14 +45,82 @@
     text-decoration: underline;
 }
 
+/* Settings Panel */
+.settings-panel {
+    position: absolute;
+    top: 50px;
+    left: 170px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-container.dark-mode .settings-panel {
+    background-color: #333;
+    color: white;
+}
+
+/* Dark mode switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #ff4da6;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
 /* Chatbox */
 .chatbox {
     flex: 1;
     display: flex;
     flex-direction: column;
     background-color: white;
+    transition: background-color 0.3s ease;
 }
 
+.chat-container.dark-mode .chatbox {
+    background-color: #222;
+}
+
+/* Chat messages */
 .chat-messages {
     flex: 1;
     padding: 15px;
@@ -54,7 +129,7 @@
     flex-direction: column;
 }
 
-/* Message Styling */
+/* Messages */
 .message {
     max-width: 70%;
     margin: 8px 0;
@@ -75,19 +150,14 @@
     align-self: flex-start;
     background-color: #f0f0f0;
     color: black;
-    display: flex;
-    align-items: center;
 }
 
-/* AI Avatar */
-.ai-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+.chat-container.dark-mode .message.ai {
+    background-color: #444;
+    color: white;
 }
 
-/* Chat Input */
+/* Chat input */
 .chat-input {
     display: flex;
     padding: 10px;
@@ -95,23 +165,36 @@
     background-color: #fff;
 }
 
-.chat-input input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.chat-container.dark-mode .chat-input {
+    background-color: #333;
 }
 
-.chat-input button {
-    margin-left: 8px;
-    padding: 8px 12px;
-    background-color: #ff4da6;
+.dark-input {
+    background-color: #444;
     color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+    border: 1px solid #666;
+}
+/* AI Message Styling */
+.message.ai {
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    font-weight: bold; /* Makes text bold */
+    font-family: "Poppins", sans-serif; /* Stylish font */
 }
 
-.chat-input button:hover {
-    background-color: #ff3385;
+.chat-container.dark-mode .message.ai {
+    background-color: #444;
+    color: white;
 }
+
+.message.ai p {
+    margin-left: 12px; /* Moves text away from the avatar */
+    font-size: 15px; /* Slightly larger text */
+    line-height: 1.4; /* Better spacing */
+}
+
+
